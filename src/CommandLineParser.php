@@ -80,7 +80,7 @@ final class CommandLineParser
 			$this->arguments[$name][Parser::VALUE] ?? null]
 		)));
 
-		if (($this->arguments[$name][Parser::OPTIONAL] ?? false) === true) {
+		if (($this->arguments[$name][Parser::OPTIONAL] ?? true) === true) {
 			$name = sprintf('[%s]', $name);
 		}
 
