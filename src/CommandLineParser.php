@@ -75,7 +75,10 @@ final class CommandLineParser
 
 	private function formatArgument(string $name): string
 	{
-		$name = sprintf('<%s>', $name);
+		$name = sprintf('<%s>', implode('=', array_filter([
+			$name,
+			$this->arguments[$name][Parser::VALUE] ?? null]
+		)));
 
 		if (($this->arguments[$name][Parser::OPTIONAL] ?? false) === true) {
 			$name = sprintf('[%s]', $name);
